@@ -5,20 +5,20 @@ if(process.env.NODE_ENV !== "production") {
 const express = require("express")
 const app = express()
 const mongoose = require('mongoose');
-const listing = require("./Models/listing")
+const listing = require("./models/listing.js")
 const path = require('path');
 const ejsMate = require("ejs-mate")
 const methodOverride = require('method-override')
-const wrapAsync = require("./Utils/wrapAsync")
-const expressError = require("./Utils/expressError.js")
+const wrapAsync = require("./utils/wrapAsync")
+const expressError = require("./utils/expressError.js")
 const {listingSchema, reviewSchema} = require("./schema.js");
-const Review = require("./Models/review.js");
+const Review = require("./models/review.js");
 const session = require("express-session")
 const { MongoStore } = require('connect-mongo');
 const flash = require("connect-flash")
 const passport = require("passport")
 const LocalStrategy = require("passport-local")
-const User = require("./Models/user.js")
+const User = require("./models/user.js")
 
 const listingRouter = require("./routes/listing")
 const reviewRouter = require("./routes/review");

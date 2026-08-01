@@ -1,4 +1,4 @@
-const listing = require("../Models/listing")
+const listing = require("../models/listing.js")
 const geocodeAddress = require("../utils/geocode.js")
 const categories = require("../utils/categories.js");
 

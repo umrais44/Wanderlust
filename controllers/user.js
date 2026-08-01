@@ -1,4 +1,4 @@
-const User = require("../Models/user")
+const User = require("../models/user")
 
 module.exports.signUp = async (req, res, next) => {
     try {

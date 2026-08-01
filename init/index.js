@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const listing = require("../Models/listing")
+const listing = require("../models/listing")
 const geocodeAddress = require("../utils/geocode.js") // adjust path if needed
 
 const initData = require("./data")

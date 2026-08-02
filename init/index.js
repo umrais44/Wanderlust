@@ -1,14 +1,22 @@
+const path = require('path');
 const mongoose = require('mongoose');
+
+require('dotenv').config({ path: path.resolve(__dirname, '..', '.env') });
 
 const listing = require("../models/listing")
 const geocodeAddress = require("../utils/geocode.js") // adjust path if needed
 
 const initData = require("./data")
 
+if (!process.env.ATLASDB_URL) {
+  console.error('ATLASDB_URL is missing. Check your .env file in the project root.');
+  process.exit(1);
+}
+
 main().catch(err => console.log(err));
 
 async function main() {
-  await mongoose.connect('mongodb://127.0.0.1:27017/wanderlust');
+  await mongoose.connect(process.env.ATLASDB_URL);
   console.log(`Connected to DB.`);
   await initDB();
 }
@@ -32,7 +40,7 @@ async function initDB() {
     }
 
     // Nominatim rate limit: max 1 request/second
-    await new Promise(resolve => setTimeout(resolve, 1100));
+    await new Promise(resolve => setTimeout(resolve, 1500));
   }
 
   console.log("Data is inserted.");

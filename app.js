@@ -1,12 +1,13 @@
+const path = require('path');
+
 if(process.env.NODE_ENV !== "production") {
-    require('dotenv').config()
+    require('dotenv').config({ path: path.resolve(__dirname, '.env') })
 }
 
 const express = require("express")
 const app = express()
 const mongoose = require('mongoose');
 const listing = require("./models/listing.js")
-const path = require('path');
 const ejsMate = require("ejs-mate")
 const methodOverride = require('method-override')
 const wrapAsync = require("./utils/wrapAsync")

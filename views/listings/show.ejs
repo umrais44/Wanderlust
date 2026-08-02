@@ -8,7 +8,7 @@
         <div class="card col-6 offset-3 show-card listing-card">
             <img class="card-img-top show-image" src="<%= list.image.url %>" alt="Listing image">
             <div class="card-body">
-                <p class="card-text">Owned By : <%= list.owner.username %></p>
+                <p class="card-text">Owned By : <%= list.owner?.username || "Unknown owner" %></p>
                 <p class="card-text"><%= list.description %></p>
                     <p class="card-text"><%= list.price.toLocaleString("en-pk") %></p>
                     <p class="card-text"><%= list.location %></p>
@@ -17,7 +17,7 @@
             </div>
         </div>
         
-        <% if(currentUser && currentUser._id.equals(list.owner._id)){ %>
+        <% if(currentUser && list.owner && currentUser._id.equals(list.owner._id)){ %>
         <div class="btns">
             <a href="/listings/<%= list._id %>/edit" class="btn btn-dark edit-btn offset-3 col-1" style="height: 2.4rem;">Edit</a>
             <br><br>
@@ -66,7 +66,7 @@
         <% for(review of list.reviews){ %>
             <div class="card col-5 mb-3 ms-3">
                 <div class="card-body">
-                    <h5 class="card-title">@<%= review.author.username %></h5>
+                    <h5 class="card-title">@<%= review.author?.username || "Anonymous" %></h5>
                     <p class="card-title"><%= review.comment %></p>
                     <p class="starability-result" data-rating="<%= review.rating %>"></p>
                 </div>

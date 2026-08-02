@@ -430,7 +430,7 @@ const sampleListings = [
     price: 85000,
     location: "Rovaniemi",
     country: "Finland",
-    category: ["arctic", "trending"],
+    category: ["artic", "trending"],
   },
 
   {
